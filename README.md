@@ -1,4 +1,4 @@
-# S6 Pressupostos React + TypeScript + Vite
+# S6 Pressupostos React + Vite
 
 En aquesta entrega, desenvoluparem una aplicació amb l'objectiu d'agilitzar
 els càlculs per al pressupost d'un lloc web, incrementant la interacció amb
