@@ -3,6 +3,7 @@ import Form from "../components/Form";
 import imgBanner from "../assets/banner.jpg";
 import MainHeader from "../components/MainHeader";
 import Navigation from "../components/Navigation";
+import Budgets from "../components/Budgets";
 
 const Calculator = () => {
   return (
@@ -17,18 +18,17 @@ const Calculator = () => {
         </h1>
       </section>
       <Navigation>
-        <Link
-          className="border-2 border-stone-300 rounded-lg p-2  hover:text-pink-300 hover:border-pink-200"
-          to="/"
-        >
-          Home
+        <Link className=" p-2 text-xl hover:text-pink-300 " to="/">
+          Benvinguda
         </Link>
       </Navigation>
       <section className="max-w-4xl m-auto ">
-        <h2 className="text-2xl md:text-3xl text-center md:text-left p-4">
-          Genera el teu pressupost
-        </h2>
-        <Form name="services">
+        <Form name="calculator">
+          <header className="flex items-center py-4">
+            <h2 className="text-2xl text-stone-200 md:text-3xl text-center md:text-left">
+              Genera el teu pressupost
+            </h2>
+          </header>
           <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
             <header className=" flex flex-col justify-center md:items-center py-4">
               <h2 className="text-3xl font-bold px-2  text-left">Seo</h2>
@@ -130,7 +130,7 @@ const Calculator = () => {
                 <input
                   className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
                   type="tel"
-                  placeholder="Telefon"
+                  placeholder="Telèfon"
                 />
                 <input
                   className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
@@ -145,52 +145,10 @@ const Calculator = () => {
                 </button>
               </article>
             </section>
-            <section className="flex flex-col gap-4">
-              <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
-                <div className="flex flex-col justify-center py-4 px-2">
-                  <h2>Pressupost 1</h2>
-                  <small>654 321 369</small>
-                  <small className="font-bold">examaple@gmail.com</small>
-                </div>
-                <div className="flex justify-center">
-                  <ul className="flex flex-col justify-center">
-                    <li>Seo</li>
-                    <li>Web</li>
-                  </ul>
-                </div>
-                <div className="flex items-center justify-center gap-2 py-4 px-2">
-                  <strong className="text-sm font-extrabold text-black">
-                    Total:
-                  </strong>
-                  <strong>
-                    1520 <small className="text-red-500">€</small>
-                  </strong>
-                </div>
-              </article>
-              <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
-                <div className="flex flex-col justify-center py-4 px-2">
-                  <h2>Pressupost 2</h2>
-                  <small>987 693 521</small>
-                  <small className="font-bold">examaple2@gmail.com</small>
-                </div>
-                <div className="flex justify-center">
-                  <ul className="flex flex-col justify-center">
-                    <li>Seo</li>
-                    <li>Web</li>
-                  </ul>
-                </div>
-                <div className="flex items-center justify-center gap-2 py-4 px-2">
-                  <strong className="text-sm font-extrabold text-black">
-                    Total:
-                  </strong>
-                  <strong>
-                    1520 <small className="text-red-500">€</small>
-                  </strong>
-                </div>
-              </article>
-            </section>
           </footer>
         </Form>
+
+        <Budgets />
       </section>
     </>
   );
