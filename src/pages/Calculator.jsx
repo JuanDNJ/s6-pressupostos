@@ -1,22 +1,16 @@
 import { Link } from "react-router-dom";
 import Form from "../components/Form";
-import imgBanner from "../assets/banner.jpg";
+
 import MainHeader from "../components/MainHeader";
 import Navigation from "../components/Navigation";
 import Budgets from "../components/Budgets";
+import Banner from "../components/Banner";
 
 const Calculator = () => {
   return (
     <>
       <MainHeader />
-      <section
-        className="banner"
-        style={{ backgroundImage: `url(${imgBanner})` }}
-      >
-        <h1 className="text-[1.3rem] xs:text-2xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-[84px] font-bold">
-          Aconsegueix la millor qualitat
-        </h1>
-      </section>
+      <Banner />
       <Navigation>
         <Link className=" p-2 text-xl hover:text-pink-300 " to="/">
           Benvinguda
