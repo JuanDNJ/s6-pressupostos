@@ -5,6 +5,7 @@ import MainHeader from "../components/MainHeader";
 import Navigation from "../components/Navigation";
 import Budgets from "../components/Budgets";
 import Banner from "../components/Banner";
+import Card from "../components/Card";
 
 const Calculator = () => {
   return (
@@ -23,7 +24,7 @@ const Calculator = () => {
               Genera el teu pressupost
             </h2>
           </header>
-          <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
+          <Card>
             <header className=" flex flex-col justify-center md:items-center py-4">
               <h2 className="text-3xl font-bold px-2  text-left">Seo</h2>
               <span className="px-2 text-sm md:text-xl md:text-center text-pretty">
@@ -39,8 +40,25 @@ const Calculator = () => {
                 <span>Afegir</span>
               </label>
             </aside>
-          </article>
-          <article className="md:min-h-56 grid  grid-cols-3  bg-stone-200 rounded-md overflow-hidden">
+          </Card>
+          <Card>
+            <header className=" flex flex-col justify-center md:items-center py-4">
+              <h2 className="text-3xl font-bold px-2  text-left">Seo</h2>
+              <span className="px-2 text-sm md:text-xl md:text-center text-pretty">
+                Fer una campanya SEO
+              </span>
+            </header>
+            <section className="flex items-center justify-center">
+              <strong className="text-2xl md:text-3xl">300 $</strong>
+            </section>
+            <aside className="flex items-center justify-center">
+              <label htmlFor="seo" className="p-2 flex gap-2">
+                <input id="seo" name="seo" type="checkbox" />
+                <span>Afegir</span>
+              </label>
+            </aside>
+          </Card>
+          <Card>
             <header className="flex flex-col justify-center md:items-center py-4">
               <h2 className="text-3xl font-bold px-2">Ads</h2>
               <span className="px-2 text-sm md:text-xl md:text-center text-pretty">
@@ -56,8 +74,8 @@ const Calculator = () => {
                 <span>Afegir</span>
               </label>
             </aside>
-          </article>
-          <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
+          </Card>
+          <Card>
             <header className="flex flex-col justify-center md:items-center py-4">
               <h2 className="text-3xl font-bold px-2">Web</h2>
               <span className="px-2 text-sm md:text-xl md:text-center text-pretty">
@@ -103,7 +121,7 @@ const Calculator = () => {
                 </div>
               </article>
             </footer>
-          </article>
+          </Card>
           <aside className="flex items-center justify-end gap-2 py-4">
             <strong className="text-stone-400">Preu pressuposat:</strong>{" "}
             <strong className="text-xl font-extrabold text-white">
