@@ -7,29 +7,16 @@ import Budgets from "../components/Budgets";
 import Banner from "../components/Banner";
 import Card from "../components/Card";
 import { useStore } from "../hooks/useStore";
-import { useState } from "react";
 
 const Calculator = () => {
-  const { products, preuPressupostat, addPreu, removePreu, pages } = useStore();
-  const [checked, setCheked] = useState(false);
-
+  const { products, preuPressupostat, addPreu} = useStore();
   const handlerInput = (event) => {
-    if (event.target.checked) {
-      if (pages) {
-        const precioPaginas = pages * 30;
-        addPreu(parseInt(event.target.value) + precioPaginas);
-      } else {
-        addPreu(parseInt(event.target.value));
-      }
-    } else {
-      if (pages) {
-        const precioPaginas = pages * 30;
-        removePreu(parseInt(event.target.value) + precioPaginas);
-      } else {
-        removePreu(parseInt(event.target.value));
-      }
-      
-    setCheked(event.target.checked);
+    if(event.target.checked){
+      addPreu(prev => prev + parseInt(event.target.value))
+    }else{
+      addPreu(prev => prev - parseInt(event.target.value))
+    }
+    
   };
 
   return (
@@ -49,7 +36,7 @@ const Calculator = () => {
             </h2>
           </header>
           {products.map((product) => (
-            <Card key={product.id} type={product.type === 101 && checked}>
+            <Card key={product.id}>
               <header className=" flex flex-col justify-center md:items-center py-4">
                 <h2 className="text-3xl font-bold px-2  text-left">
                   {product.name}
@@ -64,14 +51,8 @@ const Calculator = () => {
                 </strong>
               </section>
               <aside className="flex items-center justify-center">
-                <label htmlFor={product.name} className="p-2 flex gap-2">
-                  <input
-                    id={product.name}
-                    onInput={handlerInput}
-                    name="seo"
-                    type="checkbox"
-                    value={product.price}
-                  />
+                <label htmlFor="seo" className="p-2 flex gap-2">
+                  <input id="seo" onInput={handlerInput} name="seo" type="checkbox" value={product.price}/>
                   <span>Afegir</span>
                 </label>
               </aside>
@@ -81,7 +62,7 @@ const Calculator = () => {
           <aside className="flex items-center justify-end gap-2 py-4">
             <strong className="text-stone-400">Preu pressuposat:</strong>
             <strong className="text-xl font-extrabold text-white">
-              {preuPressupostat} <small className="text-red-500">€</small>
+            {preuPressupostat} <small className="text-red-500">€</small>
             </strong>
           </aside>
           <footer className="flex flex-col gap-4">
