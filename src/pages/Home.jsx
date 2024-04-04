@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <>
       <section className="max-w-7xl m-auto">
-        <article className="flex flex-col gap-2">
+        <article className="flex flex-col gap-2 py-16">
           <div className="py-4">
-            <h1 className="text-5xl text-center p-4">
+            <h1 className="text-7xl text-center p-4">
               Benvingut a Web three B
             </h1>
             <p className="p-4 text-xl md:text-2xl text-center md:text-pretty">

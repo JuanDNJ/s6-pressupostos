@@ -13,7 +13,7 @@ const Calculator = () => {
         className="banner"
         style={{ backgroundImage: `url(${imgBanner})` }}
       >
-        <h1 className="text-2xl md:text-7xl font-bold">
+        <h1 className="text-[1.3rem] xs:text-2xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-[84px] font-bold">
           Aconsegueix la millor qualitat
         </h1>
       </section>
@@ -147,7 +147,6 @@ const Calculator = () => {
             </section>
           </footer>
         </Form>
-
         <Budgets />
       </section>
     </>
