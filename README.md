@@ -2,7 +2,7 @@
 
 En aquesta entrega, desenvoluparem una aplicació amb l'objectiu d'agilitzar
 els càlculs per al pressupost d'un lloc web, incrementant la interacció amb
-l'usuari/àriaencomparació amb la pràctica anterior, mitjançant l'ús de
+l'usuari/ària encomparació amb la pràctica anterior, mitjançant l'ús de
 caselles de selecció, camps d'entrada (inputs) i botons.
 
 El nostre lloc web haurà de respondre i ajustar el preu total en funció
@@ -40,9 +40,9 @@ Calcular el cost del pressupost total i el cost total del web seguint la següen
 
 ![Exercici 2](./public/imatge3S6.jpg)
 
-GENIAL!, l'usuari/ària ja pot demanar 3 dels nostres serveis i personalitzar un d'ells. 
+GENIAL!, l'usuari/ària ja pot demanar 3 dels nostres serveis i personalitzar un d'ells.
 
-Per facilitar la introducció de dades per part de l'usuari, crea dos botons als costats dels camps de pàgines i llenguatges. 
+Per facilitar la introducció de dades per part de l'usuari, crea dos botons als costats dels camps de pàgines i llenguatges.
 
 Aquests botons permetran a l'usuari augmentar o disminuir la quantitat en una unitat.
 
@@ -104,7 +104,7 @@ Implementa el botó per poder activar/desactivar el descompte, i modifica la int
 
 ### Exercici 10
 
-Per finalitzar, és imprescindible oferir a l'usuari/ària la capacitat de compartir l'URL d'un pressupost perquè d'aquesta manera, el receptor/a pugui visualitzar la pantalla emplenada. 
+Per finalitzar, és imprescindible oferir a l'usuari/ària la capacitat de compartir l'URL d'un pressupost perquè d'aquesta manera, el receptor/a pugui visualitzar la pantalla emplenada.
 
 En moltes ocasions, un servei es contracta per recomanació, per la qual cosa és fonamental tenir-lo implementat.
 

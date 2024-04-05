@@ -1,52 +1,53 @@
+import { useState } from "react";
 import { useStore } from "../hooks/useStore";
+import CardFooter from "./CardFooter";
+import BudgetWebOptions from "./BudgetWebOptions";
 
-const Card = ({children, type}) => {
+const Card = ({ service }) => {
+  const { addProduct, removeProduct } = useStore();
+  const [checked, setCheked] = useState(false);
 
-    const {pages, addPage, removePage, } = useStore();
+  const handlerInput = (event, product) => {
+    const isServiceWebCheked = service.type === 101 && event.target.checked;
+    const isInputCheked = event.target.checked;
 
-    const handlerAddPage = () => {
-        addPage()
-        // console.log(pages)
+    if (isInputCheked) {
+      addProduct(product);
+    } else {
+      removeProduct(product);
     }
-    const handlerRemovePage = () => {
-        removePage()
-        // console.log(pages)
-    }
-   
-    return (
-        <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
-            {children}
-           { type && <footer className="col-span-3 grid grid-cols-6 justify-end ">
-              <article className="col-start-3 md:col-start-5 col-end-7 flex items-center gap-2 ">
-                <small className="flex-1 p-2 text-right">
-                  Nombre de pàgines
-                </small>
-                <div className="grid grid-cols-3 items-center justify-between p-2">
-                  <button onClick={handlerAddPage} className="text-center bg-blue-300 rounded-full size-8">
-                    +
-                  </button>
-                  <span className="text-center ">{pages}</span>
-                  <button onClick={handlerRemovePage} className="text-center bg-red-300 rounded-full size-8">
-                    -
-                  </button>
-                </div>
-              </article>
-              <article className="col-start-2 md:col-start-3 col-end-7 flex items-center  gap-2">
-                <small className="flex-1 p-2 justify-end text-right">
-                  Nombre de llenguatges
-                </small>
-                <div className="grid grid-cols-3 items-center justify-between p-2">
-                  <button className="text-center bg-blue-300 rounded-full size-8">
-                    +
-                  </button>
-                  <span className="text-center">0</span>
-                  <button className="text-center bg-red-300 rounded-full size-8">
-                    -
-                  </button>
-                </div>
-              </article>
-            </footer>}
-        </article>
-    )
-}
- export default Card;
+    setCheked(isServiceWebCheked);
+  };
+
+  return (
+    <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
+      <header className=" flex flex-col justify-center md:items-center py-4">
+        <h2 className="text-3xl font-bold px-2  text-left">{service.name}</h2>
+        <p className="px-2 text-sm md:text-xl md:text-center text-pretty">
+          {service.description}
+        </p>
+      </header>
+      <section className="flex items-center justify-center">
+        <strong className="text-2xl md:text-3xl">{service.price} $</strong>
+      </section>
+      <aside className="flex items-center justify-center">
+        <div className="flex items-center gap-2">
+          <input
+            id={service.name}
+            onInput={(eve) => handlerInput(eve, service)}
+            name={service.name}
+            value=""
+            type="checkbox"
+          />
+          <label htmlFor={service.name}>Afegir</label>
+        </div>
+      </aside>
+      {checked && (
+        <CardFooter>
+          <BudgetWebOptions />
+        </CardFooter>
+      )}
+    </article>
+  );
+};
+export default Card;

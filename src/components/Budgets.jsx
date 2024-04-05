@@ -9,21 +9,25 @@ const Budgets = () => {
         </h2>
         <section className="col-span-2 grid grid-cols-4 gap-2 px-4">
           <input
+            name="search"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="search"
             placeholder="Search"
           />
           <input
+            name="data"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="date"
             placeholder="Data"
           />
           <input
+            name="import"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="number"
             placeholder="Import"
           />
           <input
+            name="nombre"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="text"
             placeholder="Nom"

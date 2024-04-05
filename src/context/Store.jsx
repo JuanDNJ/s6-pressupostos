@@ -1,57 +1,56 @@
 import { createContext, useState } from "react";
 import listProducts from "../data/products.json";
-export const StoreCtx = createContext();
+import { useProducts } from "../hooks/useProducts";
+import { useCounter } from "../hooks/useCounter";
+export const Ctx = createContext();
 
 const Store = ({ children }) => {
-  const [products] = useState(listProducts);
-  const [preuPressupostat, setPreuPressupostat] = useState(0);
-  const [pages, setPages] = useState(0);
-  const [languages, setlanguages] = useState(0);
+  const [services] = useState(listProducts);
+  const {
+    countPages,
+    countLanguages,
+    handlerPage,
+    handlerLanguage,
+    resetCount,
+  } = useCounter();
+  const {
+    products,
+    addProduct,
+    removeProduct,
+    updateProductTypeWeb,
+    removeProducts,
+  } = useProducts();
 
-  const updatePagesWeb = (action, numPages) => {
-    if (action === 0) {
-      setPreuPressupostat((prev) => prev - numPages * 30);
-    }
-    if (action === 1) {
-      setPreuPressupostat((prev) => prev + numPages * 30);
-    }
-  };
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
 
-  const addPage = () => {
-    setPages((prev) => prev + 1);
-  };
-  const removePage = () => {
-    setPages((prev) => prev - 1);
-  };
-  const resetPages = () => setPages(() => 0);
+  const [budget, setbudget] = useState({});
+  const [budgets, setBudgets] = useState([]);
 
-  const updateLanguagesWeb = () => {
-    setlanguages(() => languages);
-  };
-
-  const addPreu = (newPrice) => {
-    setPreuPressupostat((price) => price + newPrice);
-  };
-  const removePreu = (newPrice) => {
-    setPreuPressupostat((price) => price - newPrice);
-  };
-  
   const value = {
     titleWeb: "WEBS THREE B",
-    preuPressupostat,
+    priceAddOptWebType: 30,
+
+    services,
+    user,
     products,
-    pages,
-    languages,
-    addPreu,
-    removePreu,
-    updatePagesWeb,
-    updateLanguagesWeb,
-    addPage,
-    removePage,
-    resetPages,
+    budget,
+    budgets,
+    countPages,
+    countLanguages,
+    handlerPage,
+    handlerLanguage,
+    resetCount,
+    addProduct,
+    removeProduct,
+    updateProductTypeWeb,
+    removeProducts,
   };
 
-  return <StoreCtx.Provider value={value}>{children}</StoreCtx.Provider>;
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 };
 
 export default Store;
