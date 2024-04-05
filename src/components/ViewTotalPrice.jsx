@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useStore } from "../hooks/useStore";
 
+// TODO: Errores: los inputs typo checkboxes del formulario: desactivar el cheked cuando se elimine el presupuesto.
+
 const ViewTotalPrice = () => {
   const {
     products,
