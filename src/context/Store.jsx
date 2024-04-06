@@ -1,11 +1,12 @@
 import { createContext, useState } from "react";
 import listProducts from "../data/products.json";
-import { useProducts } from "../hooks/useProducts";
-import { useCounter } from "../hooks/useCounter";
+import { useProducts, useCounter, useChecked } from "../hooks";
+
 export const Ctx = createContext();
 
 const Store = ({ children }) => {
   const [services] = useState(listProducts);
+  const { checkWeb, handlerInputWeb, resetCheckBox } = useChecked();
   const {
     countPages,
     countLanguages,
@@ -13,6 +14,7 @@ const Store = ({ children }) => {
     handlerLanguage,
     resetCount,
   } = useCounter();
+
   const {
     products,
     addProduct,
@@ -33,7 +35,6 @@ const Store = ({ children }) => {
   const value = {
     titleWeb: "WEBS THREE B",
     priceAddOptWebType: 30,
-
     services,
     user,
     products,
@@ -43,6 +44,9 @@ const Store = ({ children }) => {
     countLanguages,
     handlerPage,
     handlerLanguage,
+    checkWeb,
+    resetCheckBox,
+    handlerInputWeb,
     resetCount,
     addProduct,
     removeProduct,

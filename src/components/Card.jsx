@@ -1,22 +1,19 @@
-import { useState } from "react";
-import { useStore } from "../hooks/useStore";
+import { useStore } from "../hooks";
 import CardFooter from "./CardFooter";
 import BudgetWebOptions from "./BudgetWebOptions";
 
 const Card = ({ service }) => {
-  const { addProduct, removeProduct } = useStore();
-  const [checked, setCheked] = useState(false);
+  const { addProduct, removeProduct, checkWeb, handlerInputWeb } = useStore();
 
   const handlerInput = (event, product) => {
-    const isServiceWebCheked = service.type === 101 && event.target.checked;
-    const isInputCheked = event.target.checked;
-
-    if (isInputCheked) {
+    if (event.target.checked) {
       addProduct(product);
     } else {
       removeProduct(product);
     }
-    setCheked(isServiceWebCheked);
+    if (Number(event.target.dataset.type) === 101) {
+      handlerInputWeb();
+    }
   };
 
   return (
@@ -34,15 +31,16 @@ const Card = ({ service }) => {
         <div className="flex items-center gap-2">
           <input
             id={service.name}
+            data-type={service.type}
             onInput={(eve) => handlerInput(eve, service)}
             name={service.name}
-            value=""
+            value={service.price}
             type="checkbox"
           />
           <label htmlFor={service.name}>Afegir</label>
         </div>
       </aside>
-      {checked && (
+      {service.type === 101 && checkWeb && (
         <CardFooter>
           <BudgetWebOptions />
         </CardFooter>

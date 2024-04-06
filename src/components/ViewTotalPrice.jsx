@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useStore } from "../hooks/useStore";
 
-// TODO: Errores: los inputs typo checkboxes del formulario: desactivar el cheked cuando se elimine el presupuesto.
-
 const ViewTotalPrice = () => {
   const {
     products,
@@ -38,7 +36,7 @@ const ViewTotalPrice = () => {
         {calculateBudget()} <small className="text-red-500">€</small>
       </strong>
       <button
-        type="button"
+        type="reset"
         onClick={removebudget}
         className="border p-2 rounded-md text-sm font-bold text-stone-200"
       >

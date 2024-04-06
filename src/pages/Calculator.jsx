@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useStore } from "../hooks/useStore";
+import { useStore } from "../hooks";
 import { Fragment } from "react";
 import MainHeader from "../components/MainHeader";
 import Navigation from "../components/Navigation";
