@@ -3,11 +3,11 @@ import Form from "./Form";
 const Budgets = () => {
   return (
     <Form name="pressupostos">
-      <header className="grid grid-cols-3 justify-between">
-        <h2 className="text-2xl text-stone-200 font-bold">
+      <header className="grid md:grid-cols-3 justify-between">
+        <h2 className="text-2xl  py-2 text-stone-200 md:text-3xl text-center md:text-left">
           Pressupostos en curs:
         </h2>
-        <section className="col-span-2 grid grid-cols-4 gap-2 px-4">
+        <section className="col-span-2 grid md:grid-cols-4 gap-2 p-4">
           <input
             name="search"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
@@ -47,7 +47,7 @@ const Budgets = () => {
             <li>Web (4 pàgines, 2 llenguatges)</li>
           </ul>
         </div>
-        <div className="flex flex-col items-center justify-center gap-2 py-4 px-2">
+        <div className="flex md:flex-col items-center justify-center gap-2 py-4 px-2">
           <strong className="text-xl font-extrabold text-stone-500">
             Total:
           </strong>
@@ -70,7 +70,7 @@ const Budgets = () => {
             <li>Web (4 pàgines, 2 llenguatges)</li>
           </ul>
         </div>
-        <div className="flex flex-col items-center justify-center gap-2 py-4 px-2">
+        <div className="flex  md:flex-col items-center justify-center gap-2 py-4 px-2">
           <strong className="text-xl font-extrabold text-stone-500">
             Total:
           </strong>

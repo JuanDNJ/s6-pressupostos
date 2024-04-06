@@ -5,9 +5,11 @@ const BudgetWebOptions = () => {
     useStore();
 
   return (
-    <section className="col-start-2 p-4 flex flex-col gap-4">
+    <section className="col-start-1 col-end-3 md:col-start-2 py-4 md:px-2 flex flex-col gap-2 md:gap-4">
       <article className="flex items-center">
-        <span className="flex-1 p-2 text-right">Nombre de pàgines</span>
+        <span className="flex-1 p-2 text-right text-sm md:text-sm">
+          Nombre de pàgines
+        </span>
         <div className="flex-1 flex gap-2 items-center pl-8">
           <button
             onClick={handlerPage.addPage}
@@ -26,7 +28,9 @@ const BudgetWebOptions = () => {
         </div>
       </article>
       <article className="flex items-center  ">
-        <span className="flex-1 p-2 text-right">Nombre de llenguatges</span>
+        <span className="flex-1 p-2 text-right text-sm md:text-sm">
+          Nombre de llenguatges
+        </span>
         <div className="flex-1 flex gap-2 items-center pl-8">
           <button
             onClick={handlerLanguage.addLanguage}
