@@ -1,6 +1,8 @@
+import { useStore } from "../hooks";
 import Form from "./Form";
 
 const Budgets = () => {
+  const { budgets } = useStore();
   return (
     <Form name="pressupostos">
       <header className="grid md:grid-cols-3 justify-between">
@@ -34,51 +36,43 @@ const Budgets = () => {
           />
         </section>
       </header>
-      <article className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
-        <div className="flex flex-col items-center justify-center p-4 ">
-          <strong className="text-xl">Manolo el del Bombo</strong>
-          <small className="font-bold">manoloeldelbombo@gmail.com</small>
-          <small className="text-lg">654 321 369</small>
-        </div>
-        <div className="flex flex-col items-center justify-center gap-2">
-          <strong className="w-60">Servies contractats:</strong>
-          <ul className="w-60 list-disc list-inside flexflex-col items-stajustify-center font-bold text-sm">
-            <li>Seo</li>
-            <li>Web (4 pàgines, 2 llenguatges)</li>
-          </ul>
-        </div>
-        <div className="flex md:flex-col items-center justify-center gap-2 py-4 px-2">
-          <strong className="text-xl font-extrabold text-stone-500">
-            Total:
-          </strong>
-          <strong className="text-3xl font-extrabold">
-            1520 <small className="text-blue-500">€</small>
-          </strong>
-        </div>
-      </article>
-      <article className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
-        <div className="flex flex-col items-center justify-center p-4 ">
-          <strong className="text-xl">Pepe Goteras</strong>
-          <small className="font-bold">goteras@gmail.com</small>
-          <small className="text-lg">896 321 582</small>
-        </div>
-        <div className="flex flex-col items-center justify-center gap-2">
-          <strong className="w-60">Servies contractats:</strong>
-          <ul className="w-60 list-disc list-inside flexflex-col items-stajustify-center font-bold text-sm">
-            <li>Seo</li>
-            <li>Ads</li>
-            <li>Web (4 pàgines, 2 llenguatges)</li>
-          </ul>
-        </div>
-        <div className="flex  md:flex-col items-center justify-center gap-2 py-4 px-2">
-          <strong className="text-xl font-extrabold text-stone-500">
-            Total:
-          </strong>
-          <strong className="text-3xl font-extrabold">
-            1520 <small className="text-blue-500">€</small>
-          </strong>
-        </div>
-      </article>
+      {budgets.map((bud, index) => {
+        return (
+          <article
+            key={index}
+            className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden"
+          >
+            <div className="flex flex-col items-center justify-center p-4 ">
+              <strong className="text-xl">{bud.nameBudget}</strong>
+              <small className="font-bold">{bud.user.email}</small>
+              <small className="text-lg">{bud.user.phone}</small>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2">
+              <strong className="w-60">Servies contractats:</strong>
+              <ul className="w-60 list-disc list-inside flexflex-col items-stajustify-center font-bold text-sm">
+                {bud.products.map((prod) => (
+                  <li key={prod.id} className="flex gap-2 items-center">
+                    <strong>{prod.name}</strong>
+                    {prod.type === 101 && (
+                      <span>
+                        ({prod.pages} pàginas , {prod.languages} llenguatges)
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex md:flex-col items-center justify-center gap-2 py-4 px-2">
+              <strong className="text-xl font-extrabold text-stone-500">
+                Total:
+              </strong>
+              <strong className="text-3xl font-extrabold">
+                {bud.totalPrice} <small className="text-blue-500">€</small>
+              </strong>
+            </div>
+          </article>
+        );
+      })}
     </Form>
   );
 };

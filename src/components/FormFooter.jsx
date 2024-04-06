@@ -7,22 +7,31 @@ const FormFooter = () => {
         </h2>
         <article className="flex flex-col md:flex-row justify-between gap-2 md:gap-none py-4">
           <input
+            id="nameBudget"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="text"
-            placeholder="Nombre"
+            name="nameBudget"
+            placeholder="Nombre Pressupost"
           />
           <input
+            id="phone"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="tel"
+            name="phone"
             placeholder="Telèfon"
           />
           <input
+            id="email"
             className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="email"
+            name="email"
             placeholder="E-mail"
           />
           <button
             type="submit"
+            onClick={(eve) => {
+              console.log(eve);
+            }}
             className="bg-green-700 p-2 px-4 rounded-md text-stone-200 font-bold border hover:bg-stone-50 hover:text-green-700 hover:border hover:border-green-700"
           >
             Solicitar pressupost +

@@ -24,27 +24,33 @@ const Store = ({ children }) => {
   } = useProducts();
 
   const [user, setUser] = useState({
-    name: "",
+    nameBudget: "",
     email: "",
     phone: "",
   });
+  const addUser = (payload) => {
+    setUser(() => payload);
+  };
 
-  const [budget, setbudget] = useState({});
   const [budgets, setBudgets] = useState([]);
+  const addBudget = (budget) => {
+    setBudgets((prev) => [...prev, budget]);
+  };
 
   const value = {
     titleWeb: "WEBS THREE B",
+    date: Date.now(),
     priceAddOptWebType: 30,
     services,
     user,
     products,
-    budget,
     budgets,
     countPages,
     countLanguages,
     handlerPage,
     handlerLanguage,
     checkWeb,
+    addBudget,
     resetCheckBox,
     handlerInputWeb,
     resetCount,
@@ -52,6 +58,7 @@ const Store = ({ children }) => {
     removeProduct,
     updateProductTypeWeb,
     removeProducts,
+    addUser,
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

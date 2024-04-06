@@ -1,15 +1,64 @@
 import { useStore } from "../hooks";
 
+// TODO: Falta validar los campos del formulario
+
 const Form = ({ children, name }) => {
-  const { resetCheckBox } = useStore();
+  const {
+    addBudget,
+    resetCheckBox,
+    user,
+    products,
+    countLanguages,
+    countPages,
+    date,
+    priceAddOptWebType,
+  } = useStore();
 
   const handlerSubmit = (eve) => {
     eve.preventDefault();
+    const elements = [...eve.target];
+    const newUser = structuredClone(user);
+    let nameBudget = "";
+    elements.forEach((element) => {
+      if (
+        element.type !== "checkbox" &&
+        element.type !== "reset" &&
+        element.type !== "submit"
+      ) {
+        if (element.name === "nameBudget") {
+          nameBudget = element.value;
+        }
+        if (element.name === "phone") {
+          newUser.phone = element.value;
+        }
+        if (element.name === "email") {
+          newUser.email = element.value;
+        }
+      }
+    });
+
+    addBudget({
+      user: newUser,
+      nameBudget,
+      products: products.map((rec) => {
+        if (rec.type === 101) {
+          rec = {
+            ...rec,
+            pages: countPages,
+            languages: countLanguages,
+          };
+        }
+
+        return rec;
+      }),
+      date,
+      totalPrice:
+        products.reduce((acc, prod) => acc + prod.price, 0) +
+        (countLanguages + countPages) * priceAddOptWebType,
+    });
   };
 
   const handlerReset = (eve) => {
-    eve.preventDefault();
-
     const elements = [...eve.target];
 
     elements.forEach((element) => {

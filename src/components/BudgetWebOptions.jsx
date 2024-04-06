@@ -12,6 +12,7 @@ const BudgetWebOptions = () => {
         </span>
         <div className="flex-1 flex gap-2 items-center pl-8">
           <button
+            type="button"
             onClick={handlerPage.addPage}
             className="text-center bg-blue-300 rounded-full size-8"
           >
@@ -19,6 +20,7 @@ const BudgetWebOptions = () => {
           </button>
           <span className="text-center ">{countPages}</span>
           <button
+            type="button"
             onClick={handlerPage.removePage}
             disabled={countPages <= 0}
             className={` text-center bg-red-300 rounded-full size-8`}
@@ -33,6 +35,7 @@ const BudgetWebOptions = () => {
         </span>
         <div className="flex-1 flex gap-2 items-center pl-8">
           <button
+            type="button"
             onClick={handlerLanguage.addLanguage}
             className="text-center bg-blue-300 rounded-full size-8"
           >
@@ -40,6 +43,7 @@ const BudgetWebOptions = () => {
           </button>
           <span className="text-center">{countLanguages}</span>
           <button
+            type="button"
             onClick={handlerLanguage.RemoveLanguage}
             disabled={countLanguages <= 0}
             className="text-center bg-red-300 rounded-full size-8"
