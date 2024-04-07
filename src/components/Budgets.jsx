@@ -9,17 +9,17 @@ const Budgets = () => {
         <h2 className="md:col-span-2 text-2xl py-2 text-stone-200 md:text-3xl text-center md:text-left">
           Pressupostos en curs:
         </h2>
-        <section className="col-span-2 grid grid-cols-5 items-center justify-around gap-4">
+        <section className="col-span-2 grid grid-cols-5 items-center justify-around gap-4 text-stone-200">
           <input
             name="search"
-            className="col-span-2 md:col-span-2 py-1 px-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
+            className="col-span-2 md:col-span-2 py-1 px-2 rounded-md bg-stone-800 border border-sky-200"
             type="search"
             placeholder="🍳 Search"
           />
 
           <button
             type="button"
-            className="px-2 text-sm font-bold flex flex-inline items-center justify-center"
+            className="px-2 text-sm font-bold flex flex-inline items-center  justify-center"
           >
             <span>Data</span> <span> 🔺</span>
             <span>🔻</span>

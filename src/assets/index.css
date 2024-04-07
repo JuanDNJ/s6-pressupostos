@@ -28,3 +28,29 @@ img {
 .banner > h1 {
   transition: all 500ms ease-in-out;
 }
+
+dialog {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 75vw;
+  height: 25vh;
+  transition: transform 500ms ease-in-out;
+  z-index: 9;
+}
+
+dialog.show {
+  @apply border bg-white border-black rounded-md flex flex-col;
+  transition: transform 500ms ease-in-out;
+}
+dialog::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  backdrop-filter: red;
+  z-index: -1;
+}

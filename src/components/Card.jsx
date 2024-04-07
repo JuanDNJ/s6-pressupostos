@@ -3,13 +3,18 @@ import CardFooter from "./CardFooter";
 import BudgetWebOptions from "./BudgetWebOptions";
 
 const Card = ({ service }) => {
-  const { addProduct, removeProduct, checkWeb, handlerInputWeb } = useStore();
+  const { addProduct, removeProduct, checkWeb, handlerInputWeb, resetCount } =
+    useStore();
 
   const handlerInput = (event, product) => {
     if (event.target.checked) {
       addProduct(product);
     } else {
       removeProduct(product);
+
+      if (Number(event.target.dataset.type) === 101) {
+        resetCount();
+      }
     }
     if (Number(event.target.dataset.type) === 101) {
       handlerInputWeb();

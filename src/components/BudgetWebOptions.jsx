@@ -1,4 +1,5 @@
 import { useStore } from "../hooks/useStore";
+import Modal from "./Modal";
 
 const BudgetWebOptions = () => {
   const { countPages, countLanguages, handlerPage, handlerLanguage } =
@@ -8,7 +9,7 @@ const BudgetWebOptions = () => {
     <section className="col-start-1 col-end-3 md:col-start-2 py-4 md:px-2 flex flex-col gap-2 md:gap-4">
       <article className="flex items-center">
         <span className="flex-1 p-2 text-right text-sm md:text-sm">
-          Nombre de pàgines
+          <Modal>Info pagines</Modal> Nombre de pàgines
         </span>
         <div className="flex-1 flex gap-2 items-center pl-8">
           <button
@@ -31,7 +32,7 @@ const BudgetWebOptions = () => {
       </article>
       <article className="flex items-center  ">
         <span className="flex-1 p-2 text-right text-sm md:text-sm">
-          Nombre de llenguatges
+          <Modal>Info llenguatges</Modal> Nombre de llenguatges
         </span>
         <div className="flex-1 flex gap-2 items-center pl-8">
           <button
