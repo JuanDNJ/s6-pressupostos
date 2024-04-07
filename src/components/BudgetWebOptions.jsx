@@ -14,18 +14,18 @@ const BudgetWebOptions = () => {
           <button
             type="button"
             onClick={handlerPage.addPage}
-            className="text-center bg-blue-300 rounded-full size-8"
+            className="text-center bg-blue-300 rounded-full size-8 hover:border border-black active:scale-[.8]"
           >
-            +
+            <span className="emoji-plus text-sm">➕</span>
           </button>
           <span className="text-center ">{countPages}</span>
           <button
             type="button"
             onClick={handlerPage.removePage}
             disabled={countPages <= 0}
-            className={` text-center bg-red-300 rounded-full size-8`}
+            className={` text-center bg-red-300 rounded-full size-8 hover:border border-black active:scale-[.8]`}
           >
-            -
+            <span className="emoji-minor text-sm">➖</span>
           </button>
         </div>
       </article>
@@ -37,18 +37,18 @@ const BudgetWebOptions = () => {
           <button
             type="button"
             onClick={handlerLanguage.addLanguage}
-            className="text-center bg-blue-300 rounded-full size-8"
+            className="text-center bg-blue-300 rounded-full size-8 hover:border border-black active:scale-[.8]"
           >
-            +
+            <span className="emoji-plus text-sm">➕</span>
           </button>
           <span className="text-center">{countLanguages}</span>
           <button
             type="button"
             onClick={handlerLanguage.RemoveLanguage}
             disabled={countLanguages <= 0}
-            className="text-center bg-red-300 rounded-full size-8"
+            className="text-center bg-red-300 rounded-full size-8 hover:border border-black active:scale-[.8]"
           >
-            -
+            <span className="emoji-minor text-sm">➖</span>
           </button>
         </div>
       </article>

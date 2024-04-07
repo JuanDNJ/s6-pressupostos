@@ -37,7 +37,9 @@ const Card = ({ service }) => {
             value={service.price}
             type="checkbox"
           />
-          <label htmlFor={service.name}>Afegir</label>
+          <label htmlFor={service.name}>
+            <i className="cursor-pointer cart">🛒</i>
+          </label>
         </div>
       </aside>
       {service.type === 101 && checkWeb && (

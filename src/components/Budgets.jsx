@@ -5,35 +5,37 @@ const Budgets = () => {
   const { budgets } = useStore();
   return (
     <Form name="pressupostos">
-      <header className="grid md:grid-cols-3 justify-between">
-        <h2 className="text-2xl  py-2 text-stone-200 md:text-3xl text-center md:text-left">
+      <header className="grid md:grid-cols-4 items-center justify-between">
+        <h2 className="md:col-span-2 text-2xl py-2 text-stone-200 md:text-3xl text-center md:text-left">
           Pressupostos en curs:
         </h2>
-        <section className="col-span-2 grid md:grid-cols-4 gap-2 p-4">
+        <section className="col-span-2 grid grid-cols-5 items-center justify-around gap-4">
           <input
             name="search"
-            className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
+            className="col-span-2 md:col-span-2 py-1 px-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
             type="search"
-            placeholder="Search"
+            placeholder="🍳 Search"
           />
-          <input
-            name="data"
-            className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
-            type="date"
-            placeholder="Data"
-          />
-          <input
-            name="import"
-            className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
-            type="number"
-            placeholder="Import"
-          />
-          <input
-            name="nombre"
-            className="p-2 rounded-md text-stone-400 bg-stone-800 border border-sky-200"
-            type="text"
-            placeholder="Nom"
-          />
+
+          <button
+            type="button"
+            className="px-2 text-sm font-bold flex flex-inline items-center justify-center"
+          >
+            <span>Data</span> <span> 🔺</span>
+            <span>🔻</span>
+          </button>
+          <button
+            type="button"
+            className="px-2 text-sm font-bold flex flex-inline items-center justify-end"
+          >
+            Nom
+          </button>
+          <button
+            type="button"
+            className="px-2 text-sm font-bold flex flex-inline items-center justify-end"
+          >
+            ❌
+          </button>
         </section>
       </header>
       {budgets.map((bud, index) => {

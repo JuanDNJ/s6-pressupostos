@@ -30,7 +30,7 @@ const ViewTotalPrice = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => calculateBudget, [addProduct, countPages, countLanguages]);
   return (
-    <aside className="flex items-center justify-end gap-2 p-4">
+    <aside className="flex items-center justify-end gap-2">
       <strong className="text-stone-400">Preu pressuposat:</strong>
       <strong className="text-xl font-extrabold text-white">
         {calculateBudget()} <small className="text-red-500">€</small>
@@ -38,9 +38,12 @@ const ViewTotalPrice = () => {
       <button
         type="reset"
         onClick={removebudget}
-        className="border p-2 rounded-md text-sm font-bold text-stone-200"
+        className="px-4 rounded-md  font-bold text-stone-200"
       >
-        Thras
+        <span title="Remove pressupost" className="text-2xl hover:text-red-500">
+          {" "}
+          🗑
+        </span>
       </button>
     </aside>
   );

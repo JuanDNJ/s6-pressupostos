@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
-import { Fragment } from "react";
 
 const Home = () => {
   return (
-    <Fragment>
-      <article className="max-w-7xl m-auto flex flex-col gap-2 py-4">
+    <section className="max-w-7xl m-auto">
+      <article className="flex flex-col gap-2 py-4">
         <div className="py-4">
-          <h1 className="text-7xl text-center p-4">Benvingut a Web three B</h1>
+          <h1 className="text-5xl md:text-7xl text-center p-4">
+            Benvingut a Webs three B
+          </h1>
           <p className="p-4 text-xl md:text-2xl text-center md:text-pretty">
             Som una empresa especialitzada en proporcionar solucions integrals
             per a l'èxit en línia de negocis de tots els tamanys. Ens dediquem a
@@ -75,7 +76,7 @@ const Home = () => {
           </ul>
         </div>
       </article>
-    </Fragment>
+    </section>
   );
 };
 export default Home;
