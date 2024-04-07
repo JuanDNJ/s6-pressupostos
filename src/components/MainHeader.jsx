@@ -1,8 +1,7 @@
 import imgLogo from "../assets/logo.png";
 import { useStore } from "../hooks/useStore";
 const MainHeader = () => {
-
-  const {titleWeb} = useStore()
+  const { titleWeb } = useStore();
 
   return (
     <section className="sticky top-0 bg-stone-900 z-10">

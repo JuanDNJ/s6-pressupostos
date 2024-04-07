@@ -11,6 +11,7 @@ const Store = ({ children }) => {
     email: "",
     phone: "",
   });
+  const titleWeb = "WEBS THREE B";
 
   const addUser = (payload) => {
     setUser(() => payload);
@@ -22,7 +23,7 @@ const Store = ({ children }) => {
   };
 
   const value = {
-    titleWeb: "WEBS THREE B",
+    titleWeb,
     date: Date.now(),
     priceAddOptWebType: 30,
     services,
