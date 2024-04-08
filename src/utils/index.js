@@ -12,4 +12,9 @@ const infoModal = {
   },
 };
 
-export { infoModal };
+const patterns = {
+  letters: "^[a-zA-Z]+$",
+  numbers: "^[0-9]{9}",
+  email: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+};
+export { infoModal, patterns };

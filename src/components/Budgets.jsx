@@ -3,6 +3,27 @@ import Form from "./Form";
 
 const Budgets = () => {
   const { budgets } = useStore();
+
+  const handlerSearch = (eve) => {
+    // Buscar por el nombre del Presupuesto
+    budgets.find((rec) => {
+      if (rec.nameBudget === eve.target.value) {
+        console.log(rec);
+      }
+    });
+  };
+  const handlerImport = (eve) => {
+    //  Ordernar por importe, se puede crear un toggle para ordenar de menor a mayor o al contrario
+    console.log(eve);
+  };
+  const handlerNom = (eve) => {
+    //  Ordenar por nombre,  se puede crear un toggle para ordenar A - Z o Z -A
+    console.log(eve);
+  };
+  const handlerDate = (eve) => {
+    //  Ordenar por fecha,  se puede crear un toggle para ordenar de menor a mayor o al contrario
+    console.log(eve);
+  };
   return budgets.length ? (
     <Form name="pressupostos">
       <header className="grid md:grid-cols-4 items-center justify-between">
@@ -15,26 +36,29 @@ const Budgets = () => {
             className="col-span-2 md:col-span-2 py-1 px-2 rounded-md bg-stone-800 border border-sky-200"
             type="search"
             placeholder="🍳 Search"
+            onInput={handlerSearch}
           />
 
           <button
             type="button"
             className="px-2 text-sm font-bold flex flex-inline items-center  justify-center"
+            onClick={handlerDate}
           >
             <span>Data</span> <span> 🔺</span>
-            <span>🔻</span>
           </button>
           <button
             type="button"
             className="px-2 text-sm font-bold flex flex-inline items-center justify-end"
+            onClick={handlerImport}
+          >
+            Import <span>🔻</span>
+          </button>
+          <button
+            type="button"
+            className="px-2 text-sm font-bold flex flex-inline items-center justify-end"
+            onClick={handlerNom}
           >
             Nom
-          </button>
-          <button
-            type="button"
-            className="px-2 text-sm font-bold flex flex-inline items-center justify-end"
-          >
-            ❌
           </button>
         </section>
       </header>

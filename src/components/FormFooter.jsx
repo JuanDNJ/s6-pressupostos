@@ -1,3 +1,5 @@
+import { patterns } from "../utils";
+
 const FormFooter = () => {
   return (
     <footer className="flex flex-col gap-4">
@@ -12,6 +14,8 @@ const FormFooter = () => {
             type="text"
             name="nameBudget"
             placeholder="Nombre Pressupost"
+            pattern={patterns.letters}
+            required
           />
 
           <input
@@ -20,6 +24,8 @@ const FormFooter = () => {
             type="tel"
             name="phone"
             placeholder="Telèfon"
+            pattern={patterns.numbers}
+            required
           />
           <input
             id="email"
@@ -27,6 +33,8 @@ const FormFooter = () => {
             type="email"
             name="email"
             placeholder="E-mail"
+            pattern={patterns.email}
+            required
           />
           <button
             type="submit"

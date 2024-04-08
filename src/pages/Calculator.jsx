@@ -12,7 +12,7 @@ import FormHeader from "../components/FormHeader";
 import FormFooter from "../components/FormFooter";
 
 const Calculator = () => {
-  const { services } = useStore();
+  const { services, products } = useStore();
   return (
     <Fragment>
       <MainHeader />
@@ -29,7 +29,7 @@ const Calculator = () => {
             <Card key={service.id} service={service}></Card>
           ))}
           <ViewTotalPrice />
-          <FormFooter />
+          {products.length ? <FormFooter /> : ""}
         </Form>
         <Budgets />
       </section>

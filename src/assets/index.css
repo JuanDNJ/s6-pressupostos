@@ -11,7 +11,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+::-webkit-scrollbar {
+  width: 2px;
+  @apply bg-stone-200;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-yellow-500;
+}
 body {
   @apply m-0  min-w-[320px] min-h-[100vh] bg-stone-800 text-stone-200;
 }

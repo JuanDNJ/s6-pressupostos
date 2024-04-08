@@ -1,6 +1,12 @@
 import { createContext, useState } from "react";
 import listProducts from "../data/products.json";
-import { useProducts, useCounter, useChecked, useModal } from "../hooks";
+import {
+  useProducts,
+  useCounter,
+  useChecked,
+  useModal,
+  useBudgets,
+} from "../hooks";
 
 export const Ctx = createContext();
 
@@ -17,10 +23,10 @@ const Store = ({ children }) => {
     setUser(() => payload);
   };
 
-  const [budgets, setBudgets] = useState([]);
-  const addBudget = (budget) => {
-    setBudgets((prev) => [...prev, budget]);
-  };
+  // const [budgets, setBudgets] = useState([]);
+  // const addBudget = (budget) => {
+  //   setBudgets((prev) => [...prev, budget]);
+  // };
 
   const value = {
     titleWeb,
@@ -28,12 +34,11 @@ const Store = ({ children }) => {
     priceAddOptWebType: 30,
     services,
     user,
-    budgets,
+    ...useBudgets(),
     ...useProducts(),
     ...useModal(),
     ...useCounter(),
     ...useChecked(),
-    addBudget,
     addUser,
   };
 
