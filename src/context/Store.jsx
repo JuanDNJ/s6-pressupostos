@@ -6,11 +6,16 @@ import {
   useChecked,
   useModal,
   useBudgets,
+  useFilterBudgets,
 } from "../hooks";
 
 export const Ctx = createContext();
 
 const Store = ({ children }) => {
+  if (!localStorage.getItem("budgets")) {
+    localStorage.setItem("budgets", JSON.stringify([]));
+  }
+
   const [services] = useState(listProducts);
   const [user, setUser] = useState({
     nameBudget: "",
@@ -39,6 +44,7 @@ const Store = ({ children }) => {
     ...useModal(),
     ...useCounter(),
     ...useChecked(),
+    ...useFilterBudgets(),
     addUser,
   };
 

@@ -17,4 +17,31 @@ const patterns = {
   numbers: "^[0-9]{9}",
   email: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
 };
-export { infoModal, patterns };
+const getBudgetsToLocalStorage = () =>
+  JSON.parse(localStorage.getItem("budgets"));
+
+const addBudgetToLocalStorage = (budget) => {
+  localStorage.setItem(
+    "budget",
+    JSON.stringify([...getBudgetsToLocalStorage(), budget])
+  );
+};
+const removeBudgetsToLocalStorage = () => {
+  localStorage.removeItem("budgets");
+};
+const removeBudgetToLocalStorage = (payload) => {
+  const budgets = getBudgetsToLocalStorage();
+  const newBudgets = budgets.filter(
+    (budget) => budget.nameBudget !== payload.name
+  );
+  localStorage.setItem("budget", JSON.stringify(newBudgets));
+};
+
+export {
+  infoModal,
+  patterns,
+  getBudgetsToLocalStorage,
+  addBudgetToLocalStorage,
+  removeBudgetsToLocalStorage,
+  removeBudgetToLocalStorage,
+};

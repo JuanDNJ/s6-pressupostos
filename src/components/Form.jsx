@@ -15,7 +15,7 @@ const Form = ({ children, name }) => {
   } = useStore();
 
   const handlerSubmit = (eve) => {
-    eve.preventDefault();
+    // eve.preventDefault();
     const elements = [...eve.target];
     const newUser = structuredClone(user);
     let nameBudget = "";

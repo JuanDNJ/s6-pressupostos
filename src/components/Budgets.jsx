@@ -2,29 +2,36 @@ import { useStore } from "../hooks";
 import Form from "./Form";
 
 const Budgets = () => {
-  const { budgets } = useStore();
+  const { budgets, filterBudgets, setFilterBudgets } = useStore();
 
   const handlerSearch = (eve) => {
-    // Buscar por el nombre del Presupuesto
-    budgets.find((rec) => {
-      if (rec.nameBudget === eve.target.value) {
-        console.log(rec);
-      }
-    });
+    setFilterBudgets(() =>
+      budgets.filter((rec) =>
+        rec.nameBudget.toLowerCase().includes(eve.target.value.toLowerCase())
+      )
+    );
+
+    // filterByName(eve.target.value);
   };
-  const handlerImport = (eve) => {
+  const handlerImport = () => {
     //  Ordernar por importe, se puede crear un toggle para ordenar de menor a mayor o al contrario
-    console.log(eve);
+    setFilterBudgets(() => budgets.sort((a, b) => a.totalPrice - b.totalPrice));
   };
-  const handlerNom = (eve) => {
+  const handlerNom = () => {
     //  Ordenar por nombre,  se puede crear un toggle para ordenar A - Z o Z -A
-    console.log(eve);
+    const arr = budgets
+      .sort((a, b) => b.nameBudget.localeCompare(b.nameBudget))
+      .slice(0, 20);
+
+    setFilterBudgets(() => arr);
   };
-  const handlerDate = (eve) => {
+  const handlerDate = () => {
     //  Ordenar por fecha,  se puede crear un toggle para ordenar de menor a mayor o al contrario
-    console.log(eve);
+
+    setFilterBudgets(() => budgets.sort((a, b) => b.date - a.date));
   };
-  return budgets.length ? (
+
+  return (
     <Form name="pressupostos">
       <header className="grid md:grid-cols-4 items-center justify-between">
         <h2 className="md:col-span-2 text-2xl py-2 text-stone-200 md:text-3xl text-center md:text-left">
@@ -62,7 +69,7 @@ const Budgets = () => {
           </button>
         </section>
       </header>
-      {budgets.map((bud, index) => {
+      {filterBudgets.map((bud, index) => {
         return (
           <article
             key={index}
@@ -100,8 +107,6 @@ const Budgets = () => {
         );
       })}
     </Form>
-  ) : (
-    ""
   );
 };
 
