@@ -1,14 +1,14 @@
 const infoModal = {
-  pages: {
-    title: "Pages",
+  languages: {
+    title: "Número de llenguatges",
     description:
-      "Eu exercitation nostrud mollit mollit in veniam qui irure quis. Amet in sunt non pariatur non. Culpa eu eiusmod fugiat cupidatat qui velit nulla ea sit irure. Enim nulla reprehenderit cupidatat aliqua ad duis elit sit veniam ut ipsum.",
+      "Afegeix les llenguatges que tindra el teu projecte. El cost de cada llenguatge es de 30€.",
   },
 
-  languages: {
-    title: "Languages",
+  pages: {
+    title: "Número de pàginas",
     description:
-      "Amet amet magna commodo tempor anim sunt anim do proident deserunt do anim aliqua. Reprehenderit est aliquip occaecat aliquip officia minim ad deserunt.",
+      "Afegeix les págines que necesitis per a dur a terme el teu projecte. El cost de cada pàgina es de 30€.",
   },
 };
 

@@ -3,7 +3,7 @@ import Form from "./Form";
 
 const Budgets = () => {
   const { budgets } = useStore();
-  return (
+  return budgets.length ? (
     <Form name="pressupostos">
       <header className="grid md:grid-cols-4 items-center justify-between">
         <h2 className="md:col-span-2 text-2xl py-2 text-stone-200 md:text-3xl text-center md:text-left">
@@ -76,6 +76,8 @@ const Budgets = () => {
         );
       })}
     </Form>
+  ) : (
+    ""
   );
 };
 
