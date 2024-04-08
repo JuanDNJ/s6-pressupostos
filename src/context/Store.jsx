@@ -18,7 +18,6 @@ const Store = ({ children }) => {
 
   const [services] = useState(listProducts);
   const [user, setUser] = useState({
-    nameBudget: "",
     email: "",
     phone: "",
   });
