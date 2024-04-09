@@ -12,11 +12,6 @@ const infoModal = {
   },
 };
 
-const patterns = {
-  letters: "^[a-zA-Z]+$",
-  numbers: "^[0-9]{9}",
-  email: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
-};
 const getBudgetsToLocalStorage = () =>
   JSON.parse(localStorage.getItem("budgets"));
 
@@ -39,7 +34,6 @@ const removeBudgetToLocalStorage = (payload) => {
 
 export {
   infoModal,
-  patterns,
   getBudgetsToLocalStorage,
   addBudgetToLocalStorage,
   removeBudgetsToLocalStorage,

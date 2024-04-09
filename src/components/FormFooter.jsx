@@ -1,5 +1,3 @@
-import { patterns } from "../utils";
-
 const FormFooter = () => {
   return (
     <footer className="flex flex-col gap-4">
@@ -14,7 +12,8 @@ const FormFooter = () => {
             type="text"
             name="nameBudget"
             placeholder="Nombre Pressupost"
-            pattern={patterns.letters}
+            pattern="[^\s].+[^\s]"
+            title="Si us plau, introduïu lletres (majúscules o minúscules), números i espais, excloent-ne els espais al principi i al final."
             required
           />
 
@@ -24,7 +23,8 @@ const FormFooter = () => {
             type="tel"
             name="phone"
             placeholder="Telèfon"
-            pattern={patterns.numbers}
+            pattern="[0-9()+\- ]+"
+            title="Si us plau, introduïu un número de telèfon vàlid."
             required
           />
           <input
@@ -33,7 +33,7 @@ const FormFooter = () => {
             type="email"
             name="email"
             placeholder="E-mail"
-            pattern={patterns.email}
+            title="Si us plau, introduïu una adreça de correu electrònic vàlida."
             required
           />
           <button

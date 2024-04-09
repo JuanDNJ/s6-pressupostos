@@ -1,4 +1,5 @@
 import { useStore } from "../hooks";
+import { getBudgetsToLocalStorage } from "../utils";
 
 // TODO: Falta validar los campos del formulario
 
@@ -12,10 +13,10 @@ const Form = ({ children, name }) => {
     countPages,
     date,
     priceAddOptWebType,
+    setFilterBudgets,
   } = useStore();
 
   const handlerSubmit = (eve) => {
-    // eve.preventDefault();
     const elements = [...eve.target];
     const newUser = structuredClone(user);
     let nameBudget = "";
@@ -66,7 +67,7 @@ const Form = ({ children, name }) => {
         element.checked = false;
       }
     });
-
+    setFilterBudgets(() => getBudgetsToLocalStorage());
     resetCheckBox();
   };
 

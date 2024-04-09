@@ -5,6 +5,17 @@ export const useFilterBudgets = () => {
   const [filterBudgets, setFilterBudgets] = useState(
     getBudgetsToLocalStorage()
   );
-
-  return { filterBudgets, setFilterBudgets };
+  const [checkImport, setCheckImport] = useState();
+  const [checkDate, setCheckDate] = useState();
+  const [checkNomBudget, setCheckNomBudget] = useState();
+  return {
+    filterBudgets,
+    setFilterBudgets,
+    checkImport,
+    setCheckImport,
+    checkDate,
+    setCheckDate,
+    checkNomBudget,
+    setCheckNomBudget,
+  };
 };
