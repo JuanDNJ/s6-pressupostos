@@ -1,6 +1,19 @@
+import { useStore } from "../hooks";
+
 const BudgetCard = ({ budget }) => {
+  const { discount } = useStore();
   return (
-    <article className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
+    <article className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden relative">
+      <i
+        title="Pagament anual"
+        className={`${
+          budget.checkedDiscount
+            ? "flex items-center justify-center absolute top-3 right-3 font-bold text-sm text-stone-800 border-2 border-stone-500 p-2 bg-yellow-300 rounded-full w-10 h-10 cursor-help"
+            : "hidden"
+        }`}
+      >
+        {discount}%
+      </i>
       <div className="flex flex-col items-center justify-center p-4 ">
         <strong className="text-xl">{budget.nameBudget}</strong>
         <small className="font-bold">{budget.user.email}</small>
