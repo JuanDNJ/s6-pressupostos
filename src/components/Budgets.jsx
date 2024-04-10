@@ -64,59 +64,51 @@ const Budgets = () => {
 
   return (
     <Form name="pressupostos">
-      <header className="grid md:grid-cols-4 items-center justify-between">
-        <h2 className="md:col-span-2 text-2xl py-2 text-stone-200 md:text-3xl text-center md:text-left">
+      <header className="flex flex-col md:flex-row justify-between">
+        <h2 className="md:col-span-6 text-2xl py-2 text-stone-200 md:text-3xl">
           Pressupostos en curs:
         </h2>
-        <section className="col-span-2 grid grid-cols-6 items-center justify-around gap-4 text-stone-200">
-          <input
-            name="search"
-            className="col-span-2 md:col-span-2 py-1 px-2 rounded-md bg-stone-800 border border-sky-200"
-            type="search"
-            placeholder="🍳 Search"
-            onInput={handlerSearch}
-          />
-          {checkDate ? (
+        <section className="flex  md:flex-row md:items-center justify-end gap-2 text-stone-200">
+          <div className="flex-1">
+            <input
+              name="search"
+              className="w-full py-1 px-2 rounded-md bg-stone-800 border border-sky-200"
+              type="search"
+              placeholder="🍳 Search"
+              onInput={handlerSearch}
+            />
+          </div>
+          <div className="flex gap-2 justify-center">
             <a
-              onClick={() => handlerDate(1)}
-              className="px-2 text-sm font-bold flex flex-inline items-center justify-end cursor-pointer"
-            >
-              <span>Data</span> <span> 🔺</span>
-            </a>
-          ) : (
-            <a
-              onClick={() => handlerDate(0)}
-              className="px-2 text-sm font-bold flex flex-inline items-center justify-end cursor-pointer"
+              onClick={checkDate ? () => handlerDate(1) : () => handlerDate(0)}
+              className="col-span-2  md:col-span-1 text-sm font-bold flex items-center  cursor-pointer"
             >
               <span>Data</span>
-              <span>🔻</span>
+              <span className={`${checkDate && "rotate-180"}`}>🔺</span>
             </a>
-          )}
-
-          {checkImport ? (
             <a
-              onClick={() => handlerImport(1)}
-              className="px-2 text-sm font-bold flex flex-inline items-center justify-end cursor-pointer"
+              onClick={
+                checkImport ? () => handlerImport(1) : () => handlerImport(0)
+              }
+              className="col-span-2 md:col-span-1 text-sm font-bold flex items-center  cursor-pointer"
             >
-              Import <span>🔻</span>
+              <span>Import</span>
+              <span className={`${checkImport && "rotate-180"}`}>🔻</span>
             </a>
-          ) : (
             <a
-              className="px-2 text-sm font-bold flex flex-inline items-center justify-end cursor-pointer"
-              onClick={() => handlerImport(0)}
+              className="col-span-2 md:col-span-1 text-sm font-bold flex items-center cursor-pointer"
+              onClick={handlerNom}
             >
-              Import <span> 🔺</span>
+              <span>Nom</span>
             </a>
-          )}
-          <a
-            className="px-2 text-sm font-bold flex flex-inline items-center cursor-pointer"
-            onClick={handlerNom}
-          >
-            Nom
-          </a>
-          <button type="reset" title="Reinicialitzar filtre">
-            <span>❌</span>
-          </button>
+            <button
+              className="flex justify-end col-span-2 "
+              type="reset"
+              title="Reinicialitzar filtre"
+            >
+              <span>❌</span>
+            </button>
+          </div>
         </section>
       </header>
       {filterBudgets.map((bud, index) => {
