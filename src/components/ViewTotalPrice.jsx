@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useStore } from "../hooks/useStore";
+import { calculateDiscount } from "../utils";
 
 const ViewTotalPrice = () => {
   const {
@@ -23,11 +24,11 @@ const ViewTotalPrice = () => {
     const totalPricePages = countPages * priceAddOptWebType;
     const totalPriceLanguages = countLanguages * priceAddOptWebType;
     const total = priceAllProducts + totalPricePages + totalPriceLanguages;
-    let totalDiscount = 0;
+
     if (checkedDiscount) {
-      totalDiscount = ((discount / 100) * total * 100) / 100;
+      return Math.round(total - calculateDiscount(total, discount));
     }
-    return Math.round(total - totalDiscount);
+    return Math.round(total);
   };
   const removebudget = () => {
     resetCount();

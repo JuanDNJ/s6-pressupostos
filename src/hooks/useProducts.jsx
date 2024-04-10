@@ -16,19 +16,7 @@ export const useProducts = () => {
       setProducts((prev) => prev.filter((rec) => rec.id !== product.id));
     }
   };
-  const updateProductTypeWeb = (id, options) => {
-    setProducts((prev) =>
-      prev.map((rec) => {
-        if (rec.id === id && rec.type === 101) {
-          return {
-            ...rec,
-            ...options,
-          };
-        }
-        return rec;
-      })
-    );
-  };
+
   const removeProducts = () => {
     setProducts([]);
   };
@@ -36,7 +24,6 @@ export const useProducts = () => {
     products,
     addProduct,
     removeProduct,
-    updateProductTypeWeb,
     removeProducts,
   };
 };

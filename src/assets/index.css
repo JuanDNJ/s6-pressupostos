@@ -12,7 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 3px;
   @apply bg-stone-200;
 }
 ::-webkit-scrollbar-thumb {

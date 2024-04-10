@@ -1,5 +1,11 @@
 import { useStore } from "../hooks";
-import { getBudgetsToLocalStorage } from "../utils";
+import {
+  user,
+  calculateTotalBudget,
+  getBudgetsToLocalStorage,
+  updateProductTypeWeb,
+  calculateDiscount,
+} from "../utils";
 
 // TODO: Falta validar los campos del formulario
 
@@ -7,7 +13,6 @@ const Form = ({ children, name }) => {
   const {
     addBudget,
     resetCheckBox,
-    user,
     products,
     countLanguages,
     countPages,
@@ -15,12 +20,23 @@ const Form = ({ children, name }) => {
     priceAddOptWebType,
     setFilterBudgets,
     checkedDiscount,
+    discount,
   } = useStore();
 
   const handlerSubmit = (eve) => {
-    const elements = [...eve.target];
-    const newUser = structuredClone(user);
+    const newProducts = updateProductTypeWeb(products, {
+      pages: countPages,
+      languages: countLanguages,
+    });
+
     let nameBudget = "";
+    let totalPrice = calculateTotalBudget(newProducts, priceAddOptWebType);
+    const elements = [...eve.target];
+
+    if (checkedDiscount) {
+      totalPrice -= calculateDiscount(totalPrice, discount);
+    }
+
     elements.forEach((element) => {
       if (
         element.type !== "checkbox" &&
@@ -28,36 +44,24 @@ const Form = ({ children, name }) => {
         element.type !== "submit"
       ) {
         if (element.name === "nameBudget") {
-          nameBudget = element.value;
+          nameBudget = element.value.trim();
         }
         if (element.name === "phone") {
-          newUser.phone = element.value;
+          user.phone = element.value;
         }
         if (element.name === "email") {
-          newUser.email = element.value;
+          user.email = element.value.trim();
         }
       }
     });
 
     addBudget({
-      user: newUser,
+      user,
       nameBudget,
-      products: products.map((rec) => {
-        if (rec.type === 101) {
-          rec = {
-            ...rec,
-            pages: countPages,
-            languages: countLanguages,
-          };
-        }
-
-        return rec;
-      }),
+      products: newProducts,
       date,
       checkedDiscount,
-      totalPrice:
-        products.reduce((acc, prod) => acc + prod.price, 0) +
-        (countLanguages + countPages) * priceAddOptWebType,
+      totalPrice,
     });
   };
 

@@ -23,8 +23,8 @@ const FormFooter = () => {
             type="tel"
             name="phone"
             placeholder="Telèfon"
-            pattern="[0-9()+\- ]+"
-            title="Si us plau, introduïu un número de telèfon vàlid."
+            pattern="^[0-9]{9}$"
+            title="Introduzca un número de teléfono de 9 dígitos"
             required
           />
           <input
