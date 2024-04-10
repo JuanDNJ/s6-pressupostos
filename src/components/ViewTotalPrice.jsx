@@ -10,6 +10,8 @@ const ViewTotalPrice = () => {
     priceAddOptWebType,
     addProduct,
     removeProducts,
+    checkedDiscount,
+    discount,
   } = useStore();
 
   const calculateBudget = () => {
@@ -21,7 +23,11 @@ const ViewTotalPrice = () => {
     const totalPricePages = countPages * priceAddOptWebType;
     const totalPriceLanguages = countLanguages * priceAddOptWebType;
     const total = priceAllProducts + totalPricePages + totalPriceLanguages;
-    return total;
+    let totalDiscount = 0;
+    if (checkedDiscount) {
+      totalDiscount = ((discount / 100) * total * 100) / 100;
+    }
+    return Math.round(total - totalDiscount);
   };
   const removebudget = () => {
     resetCount();

@@ -14,6 +14,7 @@ const Form = ({ children, name }) => {
     date,
     priceAddOptWebType,
     setFilterBudgets,
+    checkedDiscount,
   } = useStore();
 
   const handlerSubmit = (eve) => {
@@ -53,6 +54,7 @@ const Form = ({ children, name }) => {
         return rec;
       }),
       date,
+      checkedDiscount,
       totalPrice:
         products.reduce((acc, prod) => acc + prod.price, 0) +
         (countLanguages + countPages) * priceAddOptWebType,

@@ -1,3 +1,6 @@
+const titleWeb = "WEBS THREE B";
+const priceAddOptWebType = 30;
+const discount = 20;
 const infoModal = {
   languages: {
     title: "Número de llenguatges",
@@ -33,6 +36,9 @@ const removeBudgetToLocalStorage = (payload) => {
 };
 
 export {
+  titleWeb,
+  priceAddOptWebType,
+  discount,
   infoModal,
   getBudgetsToLocalStorage,
   addBudgetToLocalStorage,

@@ -2,6 +2,11 @@ import { useState } from "react";
 
 export const useChecked = () => {
   const [checkWeb, setCheckWeb] = useState(false);
+  const [checkedDiscount, setCheckDiscount] = useState(false);
+
+  const handlerInputDiscount = () => {
+    setCheckDiscount((prev) => !prev);
+  };
 
   const handlerInputWeb = () => {
     setCheckWeb((prev) => !prev);
@@ -9,5 +14,11 @@ export const useChecked = () => {
   const resetCheckBox = () => {
     setCheckWeb(() => false);
   };
-  return { checkWeb, handlerInputWeb, resetCheckBox };
+  return {
+    checkWeb,
+    checkedDiscount,
+    handlerInputWeb,
+    handlerInputDiscount,
+    resetCheckBox,
+  };
 };

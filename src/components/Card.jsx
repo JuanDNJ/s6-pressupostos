@@ -3,8 +3,14 @@ import CardFooter from "./CardFooter";
 import BudgetWebOptions from "./BudgetWebOptions";
 
 const Card = ({ service }) => {
-  const { addProduct, removeProduct, checkWeb, handlerInputWeb, resetCount } =
-    useStore();
+  const {
+    addProduct,
+    removeProduct,
+    checkWeb,
+    handlerInputWeb,
+    resetCount,
+    checkedDiscount,
+  } = useStore();
 
   const handlerInput = (event, product) => {
     if (event.target.checked) {
@@ -29,7 +35,12 @@ const Card = ({ service }) => {
           {service.description}
         </p>
       </header>
-      <section className="flex items-center justify-center">
+      <section className="flex flex-col items-center justify-center relative">
+        {checkedDiscount && (
+          <span className="text-sm md:text-xl font-bold text-orange-500 absolute top-4 md:top-16">
+            Ahorra un 20%
+          </span>
+        )}
         <strong className="text-2xl md:text-3xl">{service.price} $</strong>
       </section>
       <aside className="flex items-center justify-center">
