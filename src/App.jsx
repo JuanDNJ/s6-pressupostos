@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Calculator from "./pages/Calculator";
 import Store from "./context/Store";
 import Modal from "./components/Modal";
+import ViewPressupost from "./pages/ViewPressupost";
 const App = () => {
   return (
     <Store>
@@ -10,6 +11,10 @@ const App = () => {
         <Modal />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route
+            path="/view-pressupost/:webPage/:seo/:ads/:pages?/:languages?"
+            element={<ViewPressupost />}
+          />
           <Route path="/calculadora" element={<Calculator />} />
         </Routes>
       </BrowserRouter>
