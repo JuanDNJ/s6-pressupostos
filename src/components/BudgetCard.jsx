@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
 import { useStore } from "../hooks";
-
+import IconShared from "../assets/shared.svg";
 const BudgetCard = ({ budget }) => {
   const { discount } = useStore();
+
   return (
     <article className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden relative">
       <i
-        title="Pagament anual"
+        title="20% de descompte pel pagament anual"
         className={`${
           budget.checkedDiscount
             ? "flex items-center justify-center absolute top-3 right-3 font-bold text-sm text-stone-800 border-2 border-stone-500 p-2 bg-yellow-300 rounded-full w-10 h-10 cursor-help"
@@ -14,6 +16,13 @@ const BudgetCard = ({ budget }) => {
       >
         {discount}%
       </i>
+      <Link
+        title="Comparteix el teu pressupost"
+        className="absolute top-5 right-20"
+        to={`/view-pressupost?id=${budget.id}`}
+      >
+        <img src={IconShared} alt="Icon Shared" />
+      </Link>
       <div className="flex flex-col items-center justify-center p-4 ">
         <strong className="text-xl">{budget.nameBudget}</strong>
         <small className="font-bold">{budget.user.email}</small>

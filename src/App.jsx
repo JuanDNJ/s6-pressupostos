@@ -11,10 +11,7 @@ const App = () => {
         <Modal />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/view-pressupost/:webPage/:seo/:ads/:pages?/:languages?"
-            element={<ViewPressupost />}
-          />
+          <Route path="/view-pressupost" element={<ViewPressupost />} />
           <Route path="/calculadora" element={<Calculator />} />
         </Routes>
       </BrowserRouter>

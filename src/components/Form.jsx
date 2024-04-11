@@ -21,6 +21,7 @@ const Form = ({ children, name }) => {
     setFilterBudgets,
     checkedDiscount,
     discount,
+    budgets,
   } = useStore();
 
   const handlerSubmit = (eve) => {
@@ -56,6 +57,7 @@ const Form = ({ children, name }) => {
     });
 
     addBudget({
+      id: budgets.length + 1,
       user,
       nameBudget,
       products: newProducts,
