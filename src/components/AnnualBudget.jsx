@@ -1,17 +1,25 @@
+import { useEffect, useRef } from "react";
 import { useStore } from "../hooks";
 
-const AnnualBudget = () => {
+const AnnualBudget = ({ checked }) => {
   const { handlerInputDiscount } = useStore();
+  const inputAnual = useRef();
+  const updateCheked = () => {
+    inputAnual.current.checked = checked;
+  };
+
+  useEffect(updateCheked, [checked]);
   return (
     <label
       htmlFor="toggle"
-      className="flex  items-center justify-center cursor-pointer "
+      className="flex items-center justify-center cursor-pointer "
     >
       <div className="mr-3 text-sm md:text-xl text-stone-200 font-medium">
         Pagament mensual
       </div>
       <div className="relative ">
         <input
+          ref={inputAnual}
           id="toggle"
           type="checkbox"
           className="hidden peer/toggle"

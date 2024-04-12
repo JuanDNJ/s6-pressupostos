@@ -4,6 +4,7 @@ import Calculator from "./pages/Calculator";
 import Store from "./context/Store";
 import Modal from "./components/Modal";
 import ViewPressupost from "./pages/ViewPressupost";
+
 const App = () => {
   return (
     <Store>

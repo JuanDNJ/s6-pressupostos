@@ -19,6 +19,14 @@ const infoModal = {
       "Afegeix les págines que necesitis per a dur a terme el teu projecte. El cost de cada pàgina es de 30€.",
   },
 };
+const urlShared = {
+  web: false,
+  seo: false,
+  ads: false,
+  pages: 0,
+  languages: 0,
+  discount: false,
+};
 const calculateTotalBudget = (payload, priceAddOptWebType) => {
   const total = payload.reduce((acc, prod) => {
     if (prod.type === 101) {
@@ -72,6 +80,7 @@ export {
   discount,
   infoModal,
   user,
+  urlShared,
   calculateDiscount,
   calculateTotalBudget,
   getBudgetsToLocalStorage,

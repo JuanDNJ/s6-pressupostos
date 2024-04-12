@@ -1,57 +1,33 @@
-import { Link } from "react-router-dom";
-import { useStore } from "../hooks";
-import IconShared from "../assets/shared.svg";
+import ProductCard from "./ProductCard";
+import Budget from "./Budget";
+import ViewBudgetAmount from "./ViewBudgetAmount";
+import BudgetHeader from "./BudgetHeader";
+import ViewDiscount from "./ViewDiscount";
 const BudgetCard = ({ budget }) => {
-  const { discount } = useStore();
-
   return (
-    <article className="md:min-h-56 grid md:grid-cols-3 bg-stone-200 rounded-md overflow-hidden relative">
-      <i
-        title="20% de descompte pel pagament anual"
-        className={`${
-          budget.checkedDiscount
-            ? "flex items-center justify-center absolute top-3 right-3 font-bold text-sm text-stone-800 border-2 border-stone-500 p-2 bg-yellow-300 rounded-full w-10 h-10 cursor-help"
-            : "hidden"
-        }`}
-      >
-        {discount}%
-      </i>
-      <Link
-        title="Comparteix el teu pressupost"
-        className="absolute top-5 right-20"
-        to={`/view-pressupost?id=${budget.id}`}
-      >
-        <img src={IconShared} alt="Icon Shared" />
-      </Link>
-      <div className="flex flex-col items-center justify-center p-4 ">
-        <strong className="text-xl">{budget.nameBudget}</strong>
-        <small className="font-bold">{budget.user.email}</small>
-        <small className="text-lg">{budget.user.phone}</small>
-      </div>
+    <Budget>
+      <BudgetHeader>
+        <ViewDiscount checkView={budget.checkedDiscount} />
+      </BudgetHeader>
+
+      {budget.nameBudget && (
+        <div className="flex flex-col items-center justify-center p-4 ">
+          <strong className="text-xl text-center">{budget.nameBudget}</strong>
+          <small className="font-bold text-left">{budget.user.email}</small>
+          <small className="text-lg">{budget.user.phone}</small>
+        </div>
+      )}
+
       <div className="flex flex-col items-center justify-center gap-2">
         <strong className="w-60">Servies contractats:</strong>
-        <ul className="w-60 list-disc list-inside flexflex-col items-stajustify-center font-bold text-sm">
+        <ul className="w-60 list-disc list-inside flex flex-col justify-center font-bold text-sm">
           {budget.products.map((prod) => (
-            <li key={prod.id} className="flex gap-2 items-center">
-              <strong>{prod.name}</strong>
-              {prod.type === 101 && (
-                <span>
-                  ({prod.pages} pàginas , {prod.languages} llenguatges)
-                </span>
-              )}
-            </li>
+            <ProductCard key={prod.id} product={prod} />
           ))}
         </ul>
       </div>
-      <div className="flex md:flex-col items-center justify-center gap-2 py-4 px-2">
-        <strong className="text-xl font-extrabold text-stone-500">
-          Total:
-        </strong>
-        <strong className="text-3xl font-extrabold">
-          {budget.totalPrice} <small className="text-blue-500">€</small>
-        </strong>
-      </div>
-    </article>
+      <ViewBudgetAmount price={budget.totalPrice} />
+    </Budget>
   );
 };
 export default BudgetCard;
