@@ -1,8 +1,9 @@
 import { useStore } from "../hooks";
-import CardFooter from "./CardFooter";
+import FormCardFooter from "./FormCardFooter";
 import BudgetWebOptions from "./BudgetWebOptions";
+import { calculateDiscount, discount } from "../utils";
 
-const Card = ({ service }) => {
+const FormCard = ({ service }) => {
   const {
     addProduct,
     removeProduct,
@@ -41,7 +42,12 @@ const Card = ({ service }) => {
             Ahorra un 20%
           </span>
         )}
-        <strong className="text-2xl md:text-3xl">{service.price} $</strong>
+        <strong className="text-2xl md:text-3xl">
+          {checkedDiscount
+            ? service.price - calculateDiscount(service.price, discount)
+            : service.price}
+          <small>€</small>
+        </strong>
       </section>
       <aside className="flex items-center justify-center">
         <div className="flex items-center gap-2">
@@ -59,11 +65,11 @@ const Card = ({ service }) => {
         </div>
       </aside>
       {service.type === 101 && checkWeb && (
-        <CardFooter>
+        <FormCardFooter>
           <BudgetWebOptions />
-        </CardFooter>
+        </FormCardFooter>
       )}
     </article>
   );
 };
-export default Card;
+export default FormCard;

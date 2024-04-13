@@ -1,19 +1,24 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { urlShared } from "../utils";
+import {
+  calculateDiscount,
+  calculateTotalBudget,
+  discount,
+  urlShared,
+  priceAddOptWebType,
+} from "../utils";
 import { useStore } from "../hooks";
 import { useEffect } from "react";
 import MainHeader from "../components/MainHeader";
 import Navigation from "../components/Navigation";
 import ProductCard from "../components/ProductCard";
 import Budget from "../components/Budget";
-import AnnualBudget from "../components/AnnualBudget";
 import ViewBudgetAmount from "../components/ViewBudgetAmount";
 import BudgetHeader from "../components/BudgetHeader";
 import ViewDiscount from "../components/ViewDiscount";
 
-const ViewPressupost = () => {
+const ViewBudgetShared = () => {
   const [searchParams] = useSearchParams();
-  const { services, addProduct, products } = useStore();
+  const { services, addSharedProduct, sharedProducts } = useStore();
 
   const viewUrlShared = {
     web: Boolean(
@@ -29,7 +34,7 @@ const ViewPressupost = () => {
 
   const updateProducts = () => {
     viewUrlShared.web &&
-      addProduct(
+      addSharedProduct(
         services.find((rec) => {
           if (rec.name === "Web") {
             rec.pages = viewUrlShared.pages;
@@ -38,11 +43,23 @@ const ViewPressupost = () => {
           }
         })
       );
-    viewUrlShared.ads && addProduct(services.find((rec) => rec.name === "Ads"));
-    viewUrlShared.seo && addProduct(services.find((rec) => rec.name === "Seo"));
+    viewUrlShared.ads &&
+      addSharedProduct(services.find((rec) => rec.name === "Ads"));
+    viewUrlShared.seo &&
+      addSharedProduct(services.find((rec) => rec.name === "Seo"));
   };
 
-  useEffect(updateProducts);
+  const calculatePrice = () => {
+    const totalProducts = calculateTotalBudget(
+      sharedProducts,
+      priceAddOptWebType
+    );
+    return viewUrlShared.discount
+      ? Math.round(totalProducts - calculateDiscount(totalProducts, discount))
+      : Math.round(totalProducts);
+  };
+
+  useEffect(updateProducts, []);
 
   return (
     <section className="flex flex-col gap-4 ">
@@ -52,7 +69,7 @@ const ViewPressupost = () => {
           Calculadora
         </Link>
       </Navigation>
-      <AnnualBudget checked={viewUrlShared.discount ? true : false} />
+
       <section className="max-w-4xl m-auto">
         <Budget>
           <BudgetHeader>
@@ -60,34 +77,34 @@ const ViewPressupost = () => {
           </BudgetHeader>
 
           <div className="flex flex-col items-center justify-center p-4 text-stone-900">
-            <form>
+            <form
+              onSubmit={(eve) => {
+                eve.preventDefault();
+              }}
+            >
               <strong className="text-xl">
                 <input
                   type="text"
                   placeholder="Ingresa el nobre de tu presupuesto"
                 />
               </strong>
-              <small className="font-bold">
-                <input type="email" placeholder="E-mail" />
-              </small>
-              <small className="text-lg">
-                <input type="tel" placeholder="Phone Number" />
-              </small>
+              <input type="email" placeholder="E-mail" />
+              <input type="tel" placeholder="Phone Number" />
             </form>
           </div>
           <div className="flex flex-col items-center justify-center gap-2 text-stone-900">
             <strong className="w-60">Servies contractats:</strong>
             <ul className="w-60 list-disc list-inside flexflex-col items-stajustify-center font-bold text-sm">
-              {products.map((rec) => (
+              {sharedProducts.map((rec) => (
                 <ProductCard key={rec.id} product={rec} />
               ))}
             </ul>
           </div>
-          <ViewBudgetAmount price={500} />
+          <ViewBudgetAmount price={calculatePrice()} />
         </Budget>
       </section>
     </section>
   );
 };
 
-export default ViewPressupost;
+export default ViewBudgetShared;

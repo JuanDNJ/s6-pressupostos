@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Calculator from "./pages/Calculator";
 import Store from "./context/Store";
 import Modal from "./components/Modal";
-import ViewPressupost from "./pages/ViewPressupost";
+import ViewBudgetShared from "./pages/ViewBudgetShared";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <Modal />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/view-pressupost" element={<ViewPressupost />} />
+          <Route path="/pressupost-compartit" element={<ViewBudgetShared />} />
           <Route path="/calculadora" element={<Calculator />} />
         </Routes>
       </BrowserRouter>
