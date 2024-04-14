@@ -11,8 +11,8 @@ const Modal = () => {
 
   return (
     <dialog ref={modal}>
-      <section className="flex h-screen  items-center justify-center ">
-        <article className="max-w-80 md:max-w-96 bg-stone-300 shadow-xl shadow-black rounded-md p-4 ">
+      <section className="flex h-screen  items-center justify-center px-4">
+        <article className="max-w-80 md:max-w-96 bg-white shadow-xl shadow-black rounded-md p-4 ">
           <header className="px-4 flex items-center justify-end">
             <button
               title="Close modal"
@@ -24,7 +24,9 @@ const Modal = () => {
             </button>
           </header>
           <section className="p-4 text-center">
-            <h1 className="text-gray-900 font-bold">{contentModal.title}</h1>
+            <strong className="text-stone-900 font-bold">
+              {contentModal.title}
+            </strong>
             <p className="text-gray-600 text-pretty text-sm">
               {contentModal.description}
             </p>

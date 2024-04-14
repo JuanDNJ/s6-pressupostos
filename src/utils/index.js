@@ -27,6 +27,7 @@ const urlShared = {
   languages: 0,
   discount: false,
 };
+const URL_SHARED = "/s6-pressupostos/pressupost-compartit?";
 const calculateTotalBudget = (payload, priceAddOptWebType) => {
   const total = payload.reduce((acc, prod) => {
     if (prod.type === 101) {
@@ -74,6 +75,50 @@ const updateProductTypeWeb = (products, options) =>
 
     return rec;
   });
+
+const createSharedUrl = (payload, inHost = false) => {
+  const objUrl = createObjdUrl(payload);
+  const keys = [...Object.keys(objUrl)];
+
+  const stringKeys = keys.reduce(
+    (acc, str) => (acc += `&${str}=${objUrl[str]}`),
+    ""
+  );
+  const host = inHost && location.host;
+  const deleteFirstLeter = stringKeys.slice(1, stringKeys.length + 1);
+  let url;
+  if (inHost) {
+    url = host.concat(URL_SHARED.concat(deleteFirstLeter));
+  } else {
+    url = URL_SHARED.concat(deleteFirstLeter);
+  }
+  return url;
+};
+
+const createObjdUrl = (payload) => {
+  const objUrl = payload.products.reduce((acc, prod) => {
+    if (prod.type === 101) {
+      acc = {
+        ...acc,
+        web: true,
+        pages: prod.pages,
+        languages: prod.languages,
+      };
+    }
+
+    if (prod.type === 102) {
+      acc = { ...acc, ads: true };
+    }
+    if (prod.type === 103) {
+      acc = { ...acc, seo: true };
+    }
+    return {
+      ...acc,
+      discount: payload.checkedDiscount,
+    };
+  }, {});
+  return objUrl;
+};
 export {
   titleWeb,
   priceAddOptWebType,
@@ -81,6 +126,7 @@ export {
   infoModal,
   user,
   urlShared,
+  URL_SHARED,
   calculateDiscount,
   calculateTotalBudget,
   getBudgetsToLocalStorage,
@@ -88,4 +134,5 @@ export {
   removeBudgetsToLocalStorage,
   removeBudgetToLocalStorage,
   updateProductTypeWeb,
+  createSharedUrl,
 };

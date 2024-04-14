@@ -62,48 +62,36 @@ const ViewBudgetShared = () => {
   useEffect(updateProducts, []);
 
   return (
-    <section className="flex flex-col gap-4 ">
+    <>
       <MainHeader />
       <Navigation>
-        <Link className=" p-2 text-xl hover:text-pink-300 " to="/calculadora">
+        <Link className="p-2 text-xl hover:text-pink-300" to="/">
+          Benvinguda
+        </Link>
+        <Link className="p-2 text-xl hover:text-pink-300 " to="/calculadora">
           Calculadora
         </Link>
       </Navigation>
-
-      <section className="max-w-4xl m-auto">
+      <section className="md:max-w-[25vw] m-auto p-4">
         <Budget>
           <BudgetHeader>
             <ViewDiscount checkView={viewUrlShared.discount} />
           </BudgetHeader>
 
-          <div className="flex flex-col items-center justify-center p-4 text-stone-900">
-            <form
-              onSubmit={(eve) => {
-                eve.preventDefault();
-              }}
-            >
-              <strong className="text-xl">
-                <input
-                  type="text"
-                  placeholder="Ingresa el nobre de tu presupuesto"
-                />
-              </strong>
-              <input type="email" placeholder="E-mail" />
-              <input type="tel" placeholder="Phone Number" />
-            </form>
+          <div className="flex flex-col md:flex-row col-span-3 items-center justify-center gap-2 text-stone-900">
+            <div className="flex flex-col gap-1 p-4">
+              <strong>Servies contractats:</strong>
+              <ul className="list-disc list-inside flex flex-col items-stajustify-center font-bold text-sm">
+                {sharedProducts.map((rec) => (
+                  <ProductCard key={rec.id} product={rec} />
+                ))}
+              </ul>
+            </div>
+            <ViewBudgetAmount price={calculatePrice()} />
           </div>
-          <div className="flex flex-col items-center justify-center gap-2 text-stone-900">
-            <strong className="w-60">Servies contractats:</strong>
-            <ul className="w-60 list-disc list-inside flexflex-col items-stajustify-center font-bold text-sm">
-              {sharedProducts.map((rec) => (
-                <ProductCard key={rec.id} product={rec} />
-              ))}
-            </ul>
-          </div>
-          <ViewBudgetAmount price={calculatePrice()} />
         </Budget>
       </section>
-    </section>
+    </>
   );
 };
 

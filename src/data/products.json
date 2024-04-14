@@ -1,14 +1,14 @@
 [
     {
         "id": 1,
-        "type": 100,
+        "type": 103,
         "name": "Seo",
         "description": "Fer una campanya SEO",
         "price": 300
     },
     {
         "id": 2,
-        "type":100,
+        "type":102,
         "name": "Ads",
         "description": "Fer una campanya de publicitat",
         "price": 400

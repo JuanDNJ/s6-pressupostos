@@ -3,10 +3,14 @@ import Budget from "./Budget";
 import ViewBudgetAmount from "./ViewBudgetAmount";
 import BudgetHeader from "./BudgetHeader";
 import ViewDiscount from "./ViewDiscount";
+import { createSharedUrl } from "../utils";
+import CopyToClipboardBtn from "./CopyToClipboardBtn";
+
 const BudgetCard = ({ budget }) => {
   return (
     <Budget>
       <BudgetHeader>
+        <CopyToClipboardBtn url={createSharedUrl(budget, true)} />
         <ViewDiscount checkView={budget.checkedDiscount} />
       </BudgetHeader>
 

@@ -29,7 +29,7 @@ const FormCard = ({ service }) => {
   };
 
   return (
-    <article className="md:min-h-56 grid grid-cols-3 bg-stone-200 rounded-md overflow-hidden">
+    <article className="md:min-h-56 grid grid-cols-3 bg-white rounded-md overflow-hidden">
       <header className=" flex flex-col justify-center md:items-center py-4">
         <h2 className="text-3xl font-bold px-2  text-left">{service.name}</h2>
         <p className="px-2 text-sm md:text-xl md:text-center text-pretty">
