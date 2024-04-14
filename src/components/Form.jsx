@@ -75,6 +75,7 @@ const Form = ({ children, name }) => {
     });
     setFilterBudgets(() => getBudgetsToLocalStorage());
     checkedOff(elements);
+    resetCheckBox();
     resetCount();
     removeProducts();
   };
