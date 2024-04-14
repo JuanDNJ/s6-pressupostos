@@ -1,4 +1,5 @@
 import { useStore } from "../hooks";
+
 import {
   user,
   calculateTotalBudget,
@@ -6,8 +7,6 @@ import {
   updateProductTypeWeb,
   calculateDiscount,
 } from "../utils";
-
-// TODO: Falta validar los campos del formulario
 
 const Form = ({ children, name }) => {
   const {
@@ -21,16 +20,24 @@ const Form = ({ children, name }) => {
     setFilterBudgets,
     checkedDiscount,
     discount,
-
     budgets,
+    resetCount,
+    removeProducts,
   } = useStore();
 
+  const checkedOff = (elements) => {
+    elements.forEach((element) => {
+      if (element.type === "checkbox") {
+        element.checked = false;
+      }
+    });
+  };
   const handlerSubmit = (eve) => {
+    eve.preventDefault();
     const newProducts = updateProductTypeWeb(products, {
       pages: countPages,
       languages: countLanguages,
     });
-
     let nameBudget = "";
     let totalPrice = calculateTotalBudget(newProducts, priceAddOptWebType);
     const elements = [...eve.target];
@@ -66,16 +73,15 @@ const Form = ({ children, name }) => {
       checkedDiscount,
       totalPrice,
     });
+    setFilterBudgets(() => getBudgetsToLocalStorage());
+    checkedOff(elements);
+    resetCount();
+    removeProducts();
   };
 
   const handlerReset = (eve) => {
     const elements = [...eve.target];
-
-    elements.forEach((element) => {
-      if (element.type === "checkbox") {
-        element.checked = false;
-      }
-    });
+    checkedOff(elements);
     setFilterBudgets(() => getBudgetsToLocalStorage());
     resetCheckBox();
   };

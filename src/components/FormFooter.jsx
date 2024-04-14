@@ -38,9 +38,6 @@ const FormFooter = () => {
           />
           <button
             type="submit"
-            onClick={(eve) => {
-              console.log(eve);
-            }}
             className="bg-green-700 p-2 px-4 flex items-center justify-between gap-2  rounded-md text-stone-200 font-bold border hover:bg-stone-50 hover:text-green-700 hover:border hover:border-green-700"
           >
             <span>Solicitar pressupost</span> <span>▶</span>
