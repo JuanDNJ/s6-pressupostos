@@ -8,7 +8,7 @@ import ViewBudgetShared from "./pages/ViewBudgetShared";
 const App = () => {
   return (
     <Store>
-      <BrowserRouter>
+      <BrowserRouter basename="/s6-pressupostos">
         <Modal />
         <Routes>
           <Route path="/" element={<Home />} />
