@@ -5,7 +5,7 @@ export default function ViewDiscount({ checkView }) {
     checkView && (
       <i
         title="20% de descompte pel pagament anual"
-        className="flex items-center justify-center font-bold text-sm text-stone-800 border-2 border-stone-500 p-2 bg-yellow-300 rounded-full w-10 h-10 cursor-help"
+        className="flex items-center justify-center font-bold text-sm text-white border-2 border-stone-500 p-2 bg-red-500 rounded-full w-9 h-9 cursor-help"
       >
         {discount}%
       </i>

@@ -23,6 +23,7 @@ const Form = ({ children, name }) => {
     budgets,
     resetCount,
     removeProducts,
+    resetDiscount,
   } = useStore();
 
   const checkedOff = (elements) => {
@@ -76,6 +77,7 @@ const Form = ({ children, name }) => {
     setFilterBudgets(() => getBudgetsToLocalStorage());
     checkedOff(elements);
     resetCheckBox();
+    resetDiscount();
     resetCount();
     removeProducts();
   };

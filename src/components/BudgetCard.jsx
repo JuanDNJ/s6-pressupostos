@@ -23,8 +23,8 @@ const BudgetCard = ({ budget }) => {
       )}
 
       <div className="flex flex-col items-center justify-center gap-2">
-        <strong className="w-60">Servies contractats:</strong>
-        <ul className="w-60 list-disc list-inside flex flex-col justify-center font-bold text-sm">
+        <strong className="">Servies contractats:</strong>
+        <ul className="w-60 list-disc list-inside flex flex-col items-center  justify-center font-bold text-sm">
           {budget.products.map((prod) => (
             <ProductCard key={prod.id} product={prod} />
           ))}

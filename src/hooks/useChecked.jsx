@@ -7,7 +7,9 @@ export const useChecked = () => {
   const handlerInputDiscount = () => {
     setCheckDiscount((prev) => !prev);
   };
-
+  const resetDiscount = () => {
+    setCheckDiscount(() => false);
+  };
   const handlerInputWeb = () => {
     setCheckWeb((prev) => !prev);
   };
@@ -20,5 +22,6 @@ export const useChecked = () => {
     handlerInputWeb,
     handlerInputDiscount,
     resetCheckBox,
+    resetDiscount,
   };
 };

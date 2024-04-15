@@ -11,6 +11,14 @@
 }
 @layer base {
   @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/roboto/Roboto-Medium.woff2) format("woff2"),
+      url(/fonts/roboto/Roboto-Medium.woff) format("woff");
+  }
+  @font-face {
     font-family: "Bebas Neue";
     font-style: normal;
     font-weight: 400;
@@ -35,7 +43,7 @@
   @apply bg-yellow-500;
 }
 body {
-  font-family: "Bebas Neue";
+  font-family: "Roboto";
   @apply m-0  min-w-[320px] min-h-[100vh] bg-stone-800 text-stone-200;
 }
 h1,
@@ -44,7 +52,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poiret One";
+  font-family: "Bebas Neue";
   @apply font-bold;
 }
 img {

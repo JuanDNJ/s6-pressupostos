@@ -4,7 +4,7 @@ export default function ViewBudgetAmount({ price }) {
       <strong className="text-xl md:text-lg font-extrabold text-stone-500">
         Total:
       </strong>
-      <strong className="text-3xl font-extrabold">
+      <strong className="text-2xl font-extrabold">
         {price} <small className="text-blue-500">€</small>
       </strong>
     </div>
