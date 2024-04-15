@@ -26,14 +26,6 @@
     src: url(/fonts/bebasneue/BebasNeue-Regular.woff2) format("woff2"),
       url(/fonts/bebasneue/BebasNeue-Regular.woff) format("woff");
   }
-  @font-face {
-    font-family: "Poiret One";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/poiretone/PoiretOne-Regular.woff2) format("woff2"),
-      url(/fonts/bebasneue/PoiretOne-Regular.woff) format("woff");
-  }
 }
 ::-webkit-scrollbar {
   width: 3px;
