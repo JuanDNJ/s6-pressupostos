@@ -27,7 +27,7 @@ const urlShared = {
   languages: 0,
   discount: false,
 };
-const URL_SHARED = "/s6-pressupostos/pressupost-compartit?";
+const URL_SHARED = "/pressupost-compartit?";
 const calculateTotalBudget = (payload, priceAddOptWebType) => {
   const total = payload.reduce((acc, prod) => {
     if (prod.type === 101) {
